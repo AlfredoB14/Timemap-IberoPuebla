@@ -67,7 +67,7 @@ const initial = {
     },
     shapes: [],
     isMobile: /Mobi/.test(navigator.userAgent),
-    language: "en-US",
+    language: "es-MX",
     cluster: {
       radius: 30,
       minZoom: 2,
@@ -87,12 +87,12 @@ const initial = {
       range: [new Date(2001, 2, 23, 12), new Date(2021, 2, 23, 12)],
       rangeLimits: [new Date(1, 1, 1, 1), new Date()],
       zoomLevels: copy[language].timeline.zoomLevels || [
-        { label: "20 years", duration: 10512000 },
-        { label: "2 years", duration: 1051200 },
-        { label: "3 months", duration: 129600 },
-        { label: "3 days", duration: 4320 },
-        { label: "12 hours", duration: 720 },
-        { label: "1 hour", duration: 60 },
+        { label: "20 años", duration: 10512000 },
+        { label: "2 años", duration: 1051200 },
+        { label: "3 meses", duration: 129600 },
+        { label: "3 días", duration: 4320 },
+        { label: "12 horas", duration: 720 },
+        { label: "1 hora", duration: 60 },
       ],
     },
     flags: {
@@ -105,10 +105,10 @@ const initial = {
       isShowingSites: true,
     },
     cover: {
-      title: "project title",
+      title: "Título del proyecto",
       description:
-        "A description of the project goes here.\n\nThis description may contain markdown.\n\n# This is a large title, for example.\n\n## Whereas this is a slightly smaller title.\n\nCheck out docs/custom-covers.md in the [Timemap GitHub repo](https://github.com/forensic-architecture/timemap) for more information around how to specify custom covers.",
-      exploreButton: "EXPLORE",
+        "Descripción del proyecto. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      exploreButton: "EXPLORAR",
     },
     toolbar: {
       panels: {
@@ -123,9 +123,9 @@ const initial = {
         },
         filters: {
           icon: DEFAULT_TAB_ICONS.FILTER,
-          label: copy[language].toolbar.filters_label,
-          title: copy[language].toolbar.explore_by_filter__title,
-          description: copy[language].toolbar.explore_by_filter__description,
+          label: copy["es-MX"].toolbar.filters_label,
+          title: copy["es-MX"].toolbar.explore_by_filter__title,
+          description: copy["es-MX"].toolbar.explore_by_filter__description,
         },
         narratives: {
           icon: DEFAULT_TAB_ICONS.NARRATIVE,

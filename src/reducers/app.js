@@ -219,7 +219,7 @@ function updateDimensions(appState, action) {
 }
 
 function toggleLanguage(appState, action) {
-  const otherLanguage = appState.language === "es-MX" ? "en-US" : "es-MX";
+  const otherLanguage = appState.language === "es-MX" ? "es-MX" : "es-MX";
   return Object.assign({}, appState, {
     language: action.language || otherLanguage,
   });

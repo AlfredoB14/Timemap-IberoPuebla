@@ -15,12 +15,12 @@ export const generateCardLayout = {
       [
         {
           kind: "date",
-          title: "Incident Date",
+          title: "Fecha incidente",
           value: event.datetime || event.date || ``,
         },
         {
           kind: "text",
-          title: "Location",
+          title: "Ubicación",
           value: event.location || `—`,
         },
       ],
@@ -28,7 +28,7 @@ export const generateCardLayout = {
       [
         {
           kind: "text",
-          title: "Summary",
+          title: "Resumen",
           value: event.description || ``,
           scaleFont: 1.1,
         },
@@ -40,30 +40,23 @@ export const generateCardLayout = {
       [
         {
           kind: "date",
-          title: "Incident Date",
+          title: "Fecha incidente",
           value: event.datetime || event.date || ``,
         },
         {
           kind: "text",
-          title: "Location",
+          title: "Ubicación",
           value: event.location || `—`,
         },
       ],
       [
         {
           kind: "text",
-          title: "Summary",
+          title: "Resumen",
           value: event.description || ``,
           scaleFont: 1.1,
         },
       ],
-      ...event.sources.flatMap((source) => [
-        source.paths.map((p) => ({
-          kind: "media",
-          title: "Media",
-          value: [{ src: p, title: null }],
-        })),
-      ]),
     ];
   },
 };
@@ -74,7 +67,7 @@ export const Card = ({
   onSelect = () => {},
   sources = [],
   isSelected = false,
-  language = "en-US",
+  language = "es-MX",
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
@@ -88,10 +81,9 @@ export const Card = ({
     />
   );
 
-  const renderCaret = () =>
-    sources.length === 0 && (
-      <CardCaret toggle={() => toggle()} isOpen={isOpen} />
-    );
+  const renderCaret = () => (
+    <CardCaret toggle={() => toggle()} isOpen={isOpen} />
+  );
 
   const renderMedia = ({ media, idx }) => {
     return <CardMedia key={idx} src={media.src} title={media.title} />;
@@ -201,8 +193,29 @@ export const Card = ({
     );
   }
 
-  // TODO: render afterCaret appropriately from props
-  sources = [];
+  function renderSourceContent(source) {
+    return (
+      <div className="card-row source-content" key={`source-${source.id}`}>
+        {source.title && (
+          <div className="card-cell">
+            <h4>{source.title}</h4>
+            {source.description && <p>{source.description}</p>}
+          </div>
+        )}
+        {source.paths && source.paths.length > 0 && (
+          <div className="card-cell">
+            {source.paths.map((path, idx) => (
+              <CardMedia
+                key={`source-media-${idx}`}
+                src={path}
+                title={`${source.type || "Media"} ${idx + 1}`}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  }
 
   return (
     <li
@@ -213,12 +226,29 @@ export const Card = ({
       {content.map((row) => renderRow(row))}
       {isOpen && (
         <div className="card-bottomhalf">
-          {sources.map(() => (
-            <div className="card-row"></div>
-          ))}
+          <div className="card-row">
+            <h4
+              style={{
+                width: "100%",
+                borderBottom: "1px solid #ddd",
+                paddingBottom: "5px",
+              }}
+            >
+              Fuentes
+            </h4>
+          </div>
+          {sources.length > 0 ? (
+            sources.map((source) => renderSourceContent(source))
+          ) : (
+            <div className="card-row">
+              <div className="card-cell">
+                <p>No hay fuentes disponibles para este evento.</p>
+              </div>
+            </div>
+          )}
         </div>
       )}
-      {sources.length > 0 ? renderCaret() : null}
+      {sources.length > 0 && renderCaret()}
     </li>
   );
 };

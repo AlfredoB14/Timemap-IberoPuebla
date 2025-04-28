@@ -79,9 +79,11 @@ class CardStack extends React.Component {
         <Card
           key={hash(content)}
           content={content}
-          language={this.props.language}
+          language={"es-MX"}
           isLoading={this.props.isLoading}
           isSelected={selections[idx]}
+          sources={event.sources || []}
+          onSelect={() => {}}
         />
       );
     });
@@ -106,7 +108,7 @@ class CardStack extends React.Component {
   }
 
   renderCardStackHeader() {
-    const headerLang = copy[this.props.language].cardstack.header;
+    const headerLang = copy["es-MX"].cardstack.header;
 
     return (
       <div
@@ -180,7 +182,7 @@ function mapStateToProps(state) {
     narrative: selectors.selectActiveNarrative(state),
     selected: selectors.selectSelected(state),
     sourceError: state.app.errors.source,
-    language: state.app.language,
+    language: "es-MX",
     isCardstack: state.app.flags.isCardstack,
     isLoading: state.app.flags.isFetchingSources,
     cardUI: state.ui.card,

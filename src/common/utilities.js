@@ -11,7 +11,7 @@ let { DATE_FMT, TIME_FMT } = process.env;
 if (!DATE_FMT) DATE_FMT = "MM/DD/YYYY";
 if (!TIME_FMT) TIME_FMT = "HH:mm";
 
-export const language = process.env.store.app.language || "en-US";
+export const language = process.env.store.app.language || "es-MX";
 
 export function getPathLeaf(path) {
   const splitPath = path.split("/");
@@ -152,7 +152,8 @@ export function getImmediateFilterParent(filter) {
  */
 export function getFilterSiblings(allFilters, filterParent, filterKey) {
   function findSiblings(filterPathObj, ancestors) {
-    if (ancestors.length === 0 || filterPathObj === {}) return {};
+    if (ancestors.length === 0 || Object.keys(filterPathObj).length === 0)
+      return {};
     const nextAncestor = ancestors.shift();
     if (Object.keys(filterPathObj).includes(nextAncestor)) {
       const nextObjToSearch = filterPathObj[nextAncestor];
@@ -471,7 +472,7 @@ export function binarySearch(ar, el, compareFn) {
 export function makeNiceDate(datetime) {
   if (datetime === null) return null;
   // see https://stackoverflow.com/questions/3552461/how-to-format-a-javascript-date
-  const dateTimeFormat = new Intl.DateTimeFormat(language, {
+  const dateTimeFormat = new Intl.DateTimeFormat("es-ES", {
     year: "numeric",
     month: "long",
     day: "2-digit",
