@@ -5,7 +5,7 @@
   "homepage": ".",
   "private": true,
   "scripts": {
-    "dev": "node scripts/start.js",
+    "dev": "set NODE_OPTIONS=--openssl-legacy-provider && node scripts/start.js",
     "build": "NODE_ENV=production node scripts/build.js",
     "dev:wsl": "HOST=0.0.0.0 npm run dev",
     "test": "node scripts/test.js --silent",
