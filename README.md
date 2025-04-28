@@ -2,6 +2,7 @@
   TimeMap - Arquitectura Forense - Ibero Puebla 
 </h1>
 
+Todo Crédito correspondiente a forensic-architecture
 ## Overview
 
 TimeMap is a standalone frontend application that allows to explore and monitor events in time and space. TimeMap uses OpenStreetMap satellite imagery as a backdrop by default, but can also be configured to use [mapbox](https://www.mapbox.com/). It uses Leaflet and d3 to visually map information.
