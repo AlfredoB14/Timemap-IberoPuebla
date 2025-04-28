@@ -1,16 +1,6 @@
 <h1 align="center">
-  TimeMap v0
+  TimeMap - Arquitectura Forense - Ibero Puebla 
 </h1>
-
-<h3>DEPRECATED. Please note that this repository is no longer actively maintained. For a more active fork, see <a href="https://github.com/bellingcat/ukraine-timemap">this project</a>.</h2>
-
-<p align="center">
-  <strong>TimeMap is a tool for exploration, monitoring and classification of incidents in time and space.<br>See a <a href="https://blmprotests.forensic-architecture.org">live instance here</a>.</strong><br>
-</p>
-
-![](docs/example-timemap.png)
-
-[![Build status](https://travis-ci.com/forensic-architecture/timemap.svg?branch=develop)](https://travis-ci.com/forensic-architecture/timemap)
 
 ## Overview
 
